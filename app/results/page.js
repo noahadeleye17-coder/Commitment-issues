@@ -6,6 +6,7 @@ import { computeStats } from "@/lib/computeStats";
 import PersonalityCard from "@/components/PersonalityCard";
 import Heatmap from "@/components/Heatmap";
 import WeekdayBars from "@/components/WeekdayBars";
+import Reveal from "@/components/Reveal";
 import styles from "./results.module.css";
 
 function ResultsInner() {
@@ -88,52 +89,60 @@ function ResultsInner() {
 
   const s = state.stats;
 
+  const statChips = [
+    { label: "longest streak", value: `${s.longestStreak} days` },
+    {
+      label: "current streak",
+      value: s.currentStreak > 0 ? `${s.currentStreak} days` : "broken",
+    },
+    {
+      label: "messiest day",
+      value: `${s.messiestDay.count} commits`,
+      hint: s.messiestDay.date,
+    },
+    { label: "peak hour", value: formatHour(s.peakHour) },
+    { label: "favorite day", value: s.peakDay },
+    { label: "avg message length", value: `${s.avgMessageLength} chars` },
+  ];
+
   return (
     <main className={styles.main}>
       <button className={styles.back} onClick={() => router.push("/")}>
         ← start over
       </button>
 
-      <div className={styles.header}>
+      <Reveal as="div" className={styles.header} y={16}>
         <p className={styles.eyebrow}>
           {s.total} commits · {formatRange(s.firstDate, s.lastDate)}
         </p>
         <h1 className={styles.title}>{state.subject}&apos;s commit history</h1>
-      </div>
+      </Reveal>
 
-      <section className={styles.section}>
+      <Reveal as="section" className={styles.section}>
         <PersonalityCard personality={s.personality} subject={state.subject} />
-      </section>
+      </Reveal>
 
-      <section className={styles.section}>
+      <Reveal as="section" className={styles.section}>
         <h2 className={styles.sectionTitle}>when you actually code</h2>
         <div className={styles.panel}>
           <Heatmap grid={s.grid} dayNames={s.dayNames} />
         </div>
-      </section>
+      </Reveal>
 
-      <section className={styles.section}>
+      <Reveal as="section" className={styles.section}>
         <h2 className={styles.sectionTitle}>commits by day of week</h2>
         <div className={styles.panel}>
           <WeekdayBars weekdayHistogram={s.weekdayHistogram} dayNames={s.dayNames} />
         </div>
-      </section>
+      </Reveal>
 
-      <section className={styles.statsGrid}>
-        <StatChip label="longest streak" value={`${s.longestStreak} days`} />
-        <StatChip
-          label="current streak"
-          value={s.currentStreak > 0 ? `${s.currentStreak} days` : "broken"}
-        />
-        <StatChip
-          label="messiest day"
-          value={`${s.messiestDay.count} commits`}
-          hint={s.messiestDay.date}
-        />
-        <StatChip label="peak hour" value={formatHour(s.peakHour)} />
-        <StatChip label="favorite day" value={s.peakDay} />
-        <StatChip label="avg message length" value={`${s.avgMessageLength} chars`} />
-      </section>
+      <div className={styles.statsGrid}>
+        {statChips.map((chip, i) => (
+          <Reveal key={chip.label} as="div" delay={i * 60} y={16}>
+            <StatChip {...chip} />
+          </Reveal>
+        ))}
+      </div>
     </main>
   );
 }
