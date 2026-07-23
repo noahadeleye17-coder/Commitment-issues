@@ -1,0 +1,118 @@
+.main {
+  min-height: 100vh;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--text-dimmer);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.back:hover {
+  color: var(--text-dim);
+}
+
+.title {
+  font-family: var(--mono);
+  font-size: 1.9rem;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+.commandBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+
+.commandText {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--diff-add);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.copyBtn {
+  flex-shrink: 0;
+  background: var(--bg-raised-2);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.copyBtn:hover {
+  border-color: var(--accent-dim);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 260px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 16px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent-dim);
+}
+
+.textarea::placeholder {
+  color: var(--text-dimmer);
+}
+
+.error {
+  color: var(--diff-remove);
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+
+.submit {
+  margin-top: 20px;
+  width: 100%;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #1a1305;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.submit:hover {
+  transform: translateY(-2px);
+}

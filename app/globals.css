@@ -1,0 +1,68 @@
+:root {
+  --bg: #11141b;
+  --bg-raised: #171b24;
+  --bg-raised-2: #1d222d;
+  --border: #262b36;
+  --border-bright: #363d4c;
+  --text: #e9e4d8;
+  --text-dim: #8b909e;
+  --text-dimmer: #5b606d;
+  --accent: #f2b84b;
+  --accent-dim: #b98d3a;
+  --diff-add: #6fcf97;
+  --diff-add-bg: rgba(111, 207, 151, 0.12);
+  --diff-remove: #f2777a;
+  --diff-remove-bg: rgba(242, 119, 122, 0.12);
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(242, 184, 75, 0.07), transparent),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(111, 207, 151, 0.05), transparent);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(242, 184, 75, 0.3);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
